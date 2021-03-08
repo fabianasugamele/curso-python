@@ -14,24 +14,14 @@
 
 ```
 
-
-
-2. Clone o repositorio abaixo
-
-```bash
-
-    git clone git@github.com:FabiSugamele..........
-
-```
-
-3. Instale as bibliotecas necessárias e suas dependencias
+2. Instale as bibliotecas necessárias e suas dependencias
 ```bash
 
     pip install -r requirements.txt
 
 ``` 
 
-4. Para obter a chave do serviço de Tradução,preencha o arquivo .env com base na sequencia de passos desse [link](https://docs.microsoft.com/pt-br/learn/modules/python-flask-build-ai-web-app/5-exercise-create-translator-service)
+3. Para obter a chave do serviço de Tradução,preencha o arquivo .env com base na sequencia de passos desse [link](https://docs.microsoft.com/pt-br/learn/modules/python-flask-build-ai-web-app/5-exercise-create-translator-service)
 ```bash
 
     KEY=your_key
