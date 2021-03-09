@@ -1,4 +1,4 @@
-##**Aplicativo Web de IA usando Python e Flask** 
+## Aplicativo Web de IA usando Python e Flask 
 
 * **
 #### 🚀 Como executar o projeto:
