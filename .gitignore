@@ -1,1 +1,14 @@
 outros/*
+imobiliaria/api/virtual/Include/*
+imobiliaria/api/virtual/Lib/*
+imobiliaria/api/virtual/Scripts/*
+imobiliaria/api/virtual/pyvenv.cfg
+imobiliaria/api/virtual/imobiliaria/__pycache__/*
+imobiliaria/api/virtual/imobiliaria/.env
+imobiliaria/api/virtual/imobiliaria/configs/__pycache__/*
+imobiliaria/api/virtual/imobiliaria/controllers/__pycache__/*
+imobiliaria/api/virtual/imobiliaria/entities/__pycache__/*
+imobiliaria/api/virtual/imobiliaria/services/__pycache__/*
+
+
+
