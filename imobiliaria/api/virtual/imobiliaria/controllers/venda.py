@@ -1,10 +1,10 @@
 from app import app
 from flask_restplus import Resource
 
-name_space_secundario = app.namespace('secundario', description='Minha API Secundária')
+name_space_secundario = app.namespace('venda', description='APIs para vendas')
 
 @name_space_secundario.route("/")
-class SecondClass(Resource):
+class VendaClass(Resource):
 	def get(self):
 		return {
 			"status": "Got new data"
