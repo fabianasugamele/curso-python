@@ -17,7 +17,7 @@ Tentei criar o projeto utilizando as boas práticas de orientação a objeto, pa
 #### Features
 
 - [X] Gerenciamento via API de cadastro dos tipos de imóveis
-- [ ] Gerenciamento via API de cadastro dos endereços dos imóveis
+- [X] Gerenciamento via API de cadastro dos endereços dos imóveis
 - [ ] Gerenciamento via API de cadastro dos gastos dos imóveis
 - [ ] Gerenciamento via API de cadastro dos proprietários dos imóveis
 - [ ] Gerenciamento via API de cadastro dos imóveis

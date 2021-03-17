@@ -1,4 +1,5 @@
 from services.tipo import ServiceTipo
+from services.endereco_imovel import ServiceEnderecoImovel
 from flask import request, jsonify
 from app import app
 from flask_restplus import Resource, fields
@@ -38,3 +39,49 @@ class TipoClass(Resource):
     def delete(self):
         ServiceTipo().delete(request)
         return {"status":"Deleted"}, status.HTTP_200_OK
+
+
+
+modelEndereco = app.model('Endereço do Imovel', 
+				  {'logradouro': fields.String(required = True, 
+    					  				 description="logradouro do imóvel", 
+    					  				 help="O logradouro não pode estar vazio"),
+                    'numero':   fields.String(required = True, 
+    					  				 description="numero do imóvel", 
+    					  				 help="O numero não pode estar vazio"),
+                    'complemento': fields.String(required = False, 
+    					  				 description="complemento do imóvel", 
+    					  				 help="O complemento não pode estar vazio"),
+                    'cep':   fields.String(required = True, 
+    					  				 description="cep do imóvel", 
+    					  				 help="O cep não pode estar vazio"),
+                    'cidade':   fields.String(required = True, 
+    					  				 description="cidade do imóvel", 
+    					  				 help="A cidade não pode estar vazio"),
+                    'uf':   fields.String(required = True, 
+    					  				 description="uf do imóvel", 
+    					  				 help="O uf não pode estar vazio")})
+
+@name_space.route("/endereco/")
+class EnderecoClass(Resource):
+
+    @app.doc(responses={ 200: 'OK', 404: 'Not Found', 500: 'Mapping Key Error' })
+    def get(self):
+        enderecos = ServiceEnderecoImovel.find_all()
+        enderecoArray = []
+        for endereco in enderecos:
+            enderecoArray.append(endereco.toDict())
+
+        return jsonify(enderecoArray)
+    
+    @app.doc(responses={ 201: 'Created', 400: 'Invalid Argument', 500: 'Mapping Key Error' })
+    @app.expect(modelEndereco)   
+    def post(self):
+        ServiceEnderecoImovel().save(request)
+        return {"status":"Created"}, status.HTTP_201_CREATED
+    
+    @app.doc(responses={ 200: 'OK', 400: 'Invalid Argument', 404:'Not Found', 500: 'Mapping Key Error' })
+    # @app.expect(model_deleted)
+    def delete(self):
+        ServiceEnderecoImovel().delete(request)
+        return {"status":"Deleted"}, status.HTTP_200_OK        
