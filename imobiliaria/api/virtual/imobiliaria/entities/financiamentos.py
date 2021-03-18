@@ -6,16 +6,16 @@ class Financiamentos(db.Model):
     id = db.Column('id', db.Integer, primary_key = True)
     banco = db.Column(db.String(10))
     quantidade_parcelas = db.Column(db.String(10))
-    porcetagem_entrada = db.Column(db.Float(100))
+    porcetagem_entrada = db.Column(db.Float())
    
 
-    def banco(self,banco):
+    def set_banco(self,banco):
         self.banco = banco
 
-    def quantidade_parcelas(self,quantidade_parcelas):
+    def set_quantidade_parcelas(self,quantidade_parcelas):
         self.quantidade_parcelas = quantidade_parcelas
 
-    def porcetagem_entrada(self,porcetagem_entrada):
+    def set_porcetagem_entrada(self,porcetagem_entrada):
         self.porcetagem_entrada = porcetagem_entrada 
             
 

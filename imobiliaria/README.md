@@ -18,11 +18,11 @@ Tentei criar o projeto utilizando as boas práticas de orientação a objeto, pa
 
 - [X] Gerenciamento via API de cadastro dos tipos de imóveis
 - [X] Gerenciamento via API de cadastro dos endereços dos imóveis
-- [x] Gerenciamento via API de cadastro dos documentos do proprietario
+- [X] Gerenciamento via API de cadastro dos documentos do proprietario
 - [ ] Gerenciamento via API de cadastro dos gastos dos imóveis
-- [x] Gerenciamento via API de cadastro dos proprietários dos imóveis
+- [X] Gerenciamento via API de cadastro dos proprietários dos imóveis
 - [ ] Gerenciamento via API de cadastro dos imóveis
-- [ ] Gerenciamento via API de vendas dos financiamentos dos imóveis
+- [X] Gerenciamento via API de vendas dos financiamentos dos imóveis
 - [ ] Gerenciamento via API de vendas dos clientes 
 - [ ] Gerenciamento via API de vendas da conclusão da venda
 - [ ] Gerenciamento de cadastro de imóvel via interface
