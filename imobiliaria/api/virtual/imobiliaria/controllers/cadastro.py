@@ -1,6 +1,8 @@
 from services.tipo import ServiceTipo
 from services.endereco_imovel import ServiceEnderecoImovel
 from services.documentos_proprietarios import ServiceDocumentosProprietario
+from services.proprietarios import ServiceProprietarios
+
 from flask import request, jsonify
 from app import app
 from flask_restplus import Resource, fields
@@ -74,6 +76,27 @@ modelDocumento = app.model('Documentos do Proprietário',
     					  				 description="titulo do proprietário", 
     					  				 help="O titulo não pode estar vazio")})
 
+modelProprietario = app.model('Dados do Proprietário', 
+				  {'nome': fields.String(required = True, 
+    					  				 description="Nome do proprietário", 
+    					  				 help="O Nome não pode estar vazio"),
+                    'id_documentos_proprietario': fields.Integer(required = True, 
+                                        description="id do documentos do proprietário", 
+    					  				 help="O id do documentos não pode estar vazio"),
+                    'data_nascimento':   fields.String(required = True, 
+    					  				 description="Data de nascimento do proprietário", 
+    					  				 help="A data de nascimento não pode estar vazio"),
+                    'estado_civil': fields.String(required = True, 
+    					  				 description="estado civil do proprietário", 
+    					  				 help="O estado civil não pode estar vazio"),
+                    'data_compra':   fields.String(required = True, 
+    					  				 description="Data da compra do imovel", 
+    					  				 help="A data da compra não pode estar vazio"),
+                
+                    'profissao':   fields.String(required = True, 
+    					  				 description="Profissão do proprietario", 
+    					  				 help="A profissão não pode estar vazio")})
+
 @name_space.route("/endereco/")
 class EnderecoClass(Resource):
 
@@ -120,5 +143,31 @@ class DocumentoClass(Resource):
     # @app.expect(model_deleted)
     def delete(self):
         ServiceDocumentosProprietario().delete(request)
+        return {"status":"Deleted"}, status.HTTP_200_OK      
+
+
+@name_space.route("/proprietarios/")
+class ProprietariosClass(Resource):
+
+    @app.doc(responses={ 200: 'OK', 404: 'Not Found', 500: 'Mapping Key Error' })
+    def get(self):
+        proprietario = ServiceProprietarios.find_all()
+        proprietariosArray = []
+        for proprietario in proprietario:
+            proprietariosArray.append(proprietario.toDict())
+
+        return jsonify(proprietariosArray)
+    
+    @app.doc(responses={ 201: 'Created', 400: 'Invalid Argument', 500: 'Mapping Key Error' })
+    @app.expect(modelProprietario)   
+    def post(self):
+        ServiceProprietarios().save(request)
+        return {"status":"Created"}, status.HTTP_201_CREATED
+    
+    @app.doc(responses={ 200: 'OK', 400: 'Invalid Argument', 404:'Not Found', 500: 'Mapping Key Error' })
+    # @app.expect(model_deleted)
+    def delete(self):
+        ServiceProprietarios().delete(request)
         return {"status":"Deleted"}, status.HTTP_200_OK        
+
 

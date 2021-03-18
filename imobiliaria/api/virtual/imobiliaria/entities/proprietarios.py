@@ -1,4 +1,5 @@
 from configs.db import db
+from sqlalchemy import inspect
 
 class Proprietarios(db.Model):
     __tablename__ = 'proprietarios'
@@ -10,10 +11,25 @@ class Proprietarios(db.Model):
     data_compra = db.Column(db.Date())
     profissao = db.Column(db.String())
 
-    def __init__(self, nome, data_nascimento, id_documentos_proprietario, estado_civil, data_compra,profissao ):
+
+    def set_nome(self,nome):
         self.nome = nome
+
+    def set_data_nascimento(self,data_nascimento):
         self.data_nascimento = data_nascimento
-        self.id_documentos_proprietario = id_documentos_proprietario
-        self.estado_civil = estado_civil
-        self.data_compra = data_compra
-        self.profissao = profissao
+
+    def set_id_documentos_proprietario (self,id_documentos_proprietario ):
+        self.id_documentos_proprietario  = id_documentos_proprietario  
+    
+    def set_estado_civil (self,estado_civil ):
+        self.estado_civil  = estado_civil
+    
+    def set_data_compra (self,data_compra ):
+        self.data_compra  = data_compra 
+    
+    def set_profissao (self,profissao ):
+        self.profissao  = profissao 
+            
+
+    def toDict(self):
+        return { c.key: getattr(self, c.key) for c in inspect(self).mapper.column_attrs }   
